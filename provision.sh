@@ -17,3 +17,6 @@ ansible-playbook -i hosts provisioner.yml
 
 # set ansible
 #cat /vagrant/hosts > /etc/ansible/hosts
+
+export ANSIBLE_HOST_KEY_CHECKING=False
+ansible-playbook -i hosts cassandra.yml

@@ -13,12 +13,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     vb.customize ["modifyvm", :id, "--memory", "2048"]
   end
 
-  config.vm.define "ansible" do |host|
-    host.vm.hostname = "ansible"
-    host.vm.network "private_network", ip: "192.168.33.11"
-    host.vm.provision :shell, :path => "provision.sh"
-  end
-
   config.vm.define "cassandra1" do |cassandra1|
     cassandra1.vm.hostname = "cassandra1"
     cassandra1.vm.network "private_network", ip: "192.168.33.12"
@@ -27,6 +21,12 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.define "cassandra2" do |cassandra2|
     cassandra2.vm.hostname = "cassandra2"
     cassandra2.vm.network "private_network", ip: "192.168.33.13"
+  end
+
+  config.vm.define "ansible" do |host|
+    host.vm.hostname = "ansible"
+    host.vm.network "private_network", ip: "192.168.33.11"
+    host.vm.provision :shell, :path => "provision.sh"
   end
 
 end
